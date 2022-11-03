@@ -1,0 +1,45 @@
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    background-color: #F3F3F3 !important;
+}
+
+::ng-deep.mat-form-field-underline {
+    /*change color of underline*/
+    background-color: #032E7A !important;
+}
+  
+::ng-deep.mat-form-field-ripple {
+   /*change color of underline when focused*/
+   background-color: #032E7A !important;
+}
+
+.login {
+    background-color: #F3F3F3;
+    border: 2px solid #032E7A;
+    border-radius: 10px;
+    padding: 5vh 5vw;
+}
+
+.hide-icon {
+    color: #032E7A;
+}
+
+.login-button {
+    background-color: #032E7A;
+    color: white;
+}
+
+.sign-up-button {
+    background-color: #5EBA7D;
+    color: white;
+    float: right;
+}
+
+.sign-up-for-account {
+    margin: 2vh 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .sign-up-anchor {
+        color: #5EBA7D;
+    }
+}

@@ -1,0 +1,40 @@
+<div class="form-field login">
+    <mat-form-field appearance="legacy" class="email-field">
+        <mat-label>Email</mat-label>
+        <input matInput
+                [formControl]="email"
+                type="email"
+                placeholder="email" required>
+        <mat-error *ngIf="email.invalid">
+            <!-- {{getFormFieldErrorMessage('email')}} -->
+            Invalid Email
+        </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="legacy" class="password-field">
+        <mat-label>Password</mat-label>
+        <input matInput
+                [formControl]="password"
+                [type]="hide ? 'password' : 'text'"
+                placeholder="password" required>
+        <mat-icon matSuffix (click)="togglePasswordHide()">
+            {{hide ? 'visibility_off' : 'visibility'}}
+        </mat-icon>
+        <mat-error *ngIf="password.invalid">
+            <!-- {{getFormFieldErrorMessage('password')}} -->
+            Invalid Password
+        </mat-error>
+    </mat-form-field>
+    <button mat-raised-button
+            [disabled]="password.invalid || email.invalid"
+            type="submit"
+            class="login-button"
+            (click)="login()">
+        Login
+    </button>
+    <div class="sign-up-for-account">
+        <small>
+            Do not have an account? <a href="/sign-up" class="sign-up-anchor">Sign Up</a>
+        </small>
+    </div>
+</div>
