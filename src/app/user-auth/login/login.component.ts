@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { LoginService } from '../../services/login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   constructor(private loginService: LoginService, private router: Router) { }
 
@@ -17,15 +17,8 @@ export class LoginComponent implements OnInit {
   protected email = new FormControl('', [Validators.required, Validators.email]);
   protected password = new FormControl('', [Validators.required]);
 
-  ngOnInit(): void {
-  }
-
   protected togglePasswordHide(): void {
     this.hide = !this.hide;
-  }
-
-  protected disableLoginButton(): boolean {
-    return !this.password.invalid && !this.email.invalid;
   }
 
   public login(): void {

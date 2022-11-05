@@ -5,7 +5,7 @@
                 [formControl]="email"
                 type="email"
                 placeholder="email" required>
-        <mat-error *ngIf="email.invalid">
+        <mat-error *ngIf="email.invalid || !this.email.errors">
             <!-- {{getFormFieldErrorMessage('email')}} -->
             Invalid Email
         </mat-error>
@@ -20,13 +20,13 @@
         <mat-icon matSuffix (click)="togglePasswordHide()">
             {{hide ? 'visibility_off' : 'visibility'}}
         </mat-icon>
-        <mat-error *ngIf="password.invalid">
+        <mat-error *ngIf="password.invalid || this.password.errors">
             <!-- {{getFormFieldErrorMessage('password')}} -->
             Invalid Password
         </mat-error>
     </mat-form-field>
     <button mat-raised-button
-            [disabled]="password.invalid || email.invalid"
+            [disabled]="this.email.errors || this.password.errors"
             type="submit"
             class="login-button"
             (click)="login()">

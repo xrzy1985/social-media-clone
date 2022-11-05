@@ -1,41 +1,68 @@
 <div class="form-field sign-up">
-    <mat-form-field appearance="legacy" class="name-field">
-        <mat-label>Name</mat-label>
-        <input matInput
-                [formControl]="name"
-                type="email"
-                placeholder="Name" required>
-        <mat-error *ngIf="name.invalid">
-            <!-- {{getFormFieldErrorMessage('name')}} -->
-            Invalid Name
-        </mat-error>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="legacy" class="email-field">
-        <mat-label>Email</mat-label>
-        <input matInput
-                [formControl]="email"
-                type="email"
-                placeholder="Email" required>
-        <mat-error *ngIf="email.invalid">
-            <!-- {{getFormFieldErrorMessage('email')}} -->
-            Invalid Email
-        </mat-error>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="legacy" class="password-field">
-        <mat-label>Password</mat-label>
-        <input matInput
-                [formControl]="password"
-                [type]="hide ? 'password' : 'text'"
-                placeholder="Password" required>
-        <mat-icon matSuffix class="hide-icon" (click)="togglePasswordHide()">
-            {{hide ? 'visibility_off' : 'visibility'}}
-        </mat-icon>
-        <mat-error *ngIf="password.invalid">
-            <!-- {{getFormFieldErrorMessage('password')}} -->
-            Invalid Password
-        </mat-error>
-    </mat-form-field>
-    <button mat-raised-button class="sign-up-button" (click)="signUp()">Sign Up</button>
+    <form [formGroup]="form">
+        <mat-form-field appearance="legacy" class="name-field">
+            <mat-label>First Name</mat-label>
+            <input matInput
+                    formControlName="firstName"
+                    type="text"
+                    placeholder="First Name" required>
+            <mat-error *ngIf="form.invalid">
+                <!-- {{getFormFieldErrorMessage('name')}} -->
+                Invalid Name
+            </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="legacy" class="name-field">
+            <mat-label>Last Name</mat-label>
+            <input matInput
+                    formControlName="lastName"
+                    type="text"
+                    placeholder="Last Name" required>
+            <mat-error *ngIf="form.invalid">
+                <!-- {{getFormFieldErrorMessage('name')}} -->
+                Invalid Name
+            </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="legacy" class="email-field">
+            <mat-label>Email</mat-label>
+            <input matInput
+                    formControlName="email"
+                    type="email"
+                    placeholder="Email" required>
+            <mat-error *ngIf="form.invalid">
+                <!-- {{getFormFieldErrorMessage('email')}} -->
+                Invalid Email
+            </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="legacy" class="password-field">
+            <mat-label>Password</mat-label>
+            <input matInput
+                    formControlName="password"
+                    [type]="hide ? 'password' : 'text'"
+                    placeholder="Password" required>
+            <mat-icon matSuffix
+                        class="hide-icon"
+                        (click)="togglePasswordHide()">
+                {{hide ? 'visibility_off' : 'visibility'}}
+            </mat-icon>
+            <mat-error *ngIf="form.invalid">
+                <!-- {{getFormFieldErrorMessage('password')}} -->
+                Invalid Password
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Enter your date of birth</mat-label>
+            <input matInput formControlName="dob" [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="form.invalid">
+                <!-- {{getFormFieldErrorMessage('password')}} -->
+                Invalid Date of Birth
+            </mat-error>
+        </mat-form-field>
+    </form>
+    <button mat-raised-button class="sign-up-button" (click)="signUp()" [disabled]="form.invalid">Sign Up</button>
 </div>

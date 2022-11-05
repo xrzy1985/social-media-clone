@@ -13,5 +13,5 @@ export const environment = {
     home: 'Home',
     profile: 'Profile'
   },
-  title: 'RxJs',
+  title: 'Social Media',
 };
