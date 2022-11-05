@@ -9,6 +9,7 @@ import {
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { LoginService } from '../../services/login.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-sign-up',
@@ -21,6 +22,7 @@ export class SignUpComponent {
 
   constructor(
     private fb: FormBuilder,
+    private http: HttpClient,
     private loginService: LoginService,
     private router: Router
   ) {
@@ -65,9 +67,15 @@ export class SignUpComponent {
     const user = {
       name: `${this.form.get('firstName')?.value} ${this.form.get('lastName')?.value}`,
       email: this.form.get('email')?.value,
-      password: this.form.get('password')?.value,
+      password: this.loginService.encrypted(this.form.get('password')?.value),
       dob: new Date(this.form.get('dob')?.value)
     };
+    // move into http service
+    this.http.post('http://localhost:3200/authenticate/sign-up', user).subscribe({
+      next: ((resp: any) => {
+        console.log(resp);
+      })
+    });
     console.log(user);
   }
 
