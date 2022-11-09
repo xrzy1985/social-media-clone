@@ -27,7 +27,7 @@ export class OnlyLoggedInUsersGuard implements CanActivate {
     if (this.isLoggedIn$.getValue()) {
       return true;
     } else {
-      this.router.navigate(['login']);
+      this.router.navigate(['']);
       return false;
     }
   }

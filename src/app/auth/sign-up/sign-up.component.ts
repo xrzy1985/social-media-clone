@@ -45,7 +45,6 @@ export class SignUpComponent {
         Validators.required,
       ]),
       dob: new FormControl('', [
-        this.dateValidator,
         Validators.maxLength(10),
         Validators.minLength(10),
         Validators.required]),
@@ -71,7 +70,7 @@ export class SignUpComponent {
       dob: new Date(this.form.get('dob')?.value)
     };
     // move into http service
-    this.http.post('http://localhost:3200/authenticate/sign-up', user).subscribe({
+    this.http.post('http://localhost:3200/authenticate/create', user).subscribe({
       next: ((resp: any) => {
         console.log(resp);
       })

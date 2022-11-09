@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
-import { UserAuthModule } from './user-auth/user-auth.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
@@ -17,6 +16,7 @@ import { AppComponent } from './app.component';
 import { MatButtonModule } from '@angular/material/button';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { HomeComponent } from './components/home/home.component';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, ToolbarComponent],
@@ -36,7 +36,7 @@ import { HomeComponent } from './components/home/home.component';
     MatSidenavModule,
     MatToolbarModule,
     ReactiveFormsModule,
-    UserAuthModule,
+    AuthModule
   ],
   providers: [
     {
